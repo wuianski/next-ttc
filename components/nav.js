@@ -8,7 +8,10 @@ const positions = ["left", "right", "top", "bottom", "center"];
 
 import styles from "./nav.module.css";
 
-export default function Nav() {
+//import dynamic from "next/dynamic";
+//const Worklist = dynamic(() => import("../pages/works/index"));
+
+function Nav({ drawings }) {
   const [open, setOpen] = React.useState();
   const [gutter] = React.useState("small");
   const [modal] = React.useState(true);
@@ -98,3 +101,20 @@ export default function Nav() {
     </div>
   );
 }
+
+export async function getServerSideProps() {
+  const baseUrl = process.env.STRAPI_API_URL;
+  //console.log(baseUrl);
+  let drawingURL = `${baseUrl}/drawings`;
+
+  const res = await fetch(`${drawingURL}`);
+  const drawings = await res.json();
+
+  return {
+    props: {
+      drawings,
+    },
+  };
+}
+
+export default Nav;

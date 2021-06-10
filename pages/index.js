@@ -1,5 +1,4 @@
 import dynamic from "next/dynamic";
-
 import { Box } from "grommet";
 
 const Nav = dynamic(() => import("../components/nav"));

@@ -9,9 +9,26 @@ body {
 a {
   color: inherit;
   text-decoration: none;
+  cursor: pointer;
 }
 
 * {
   box-sizing: border-box;
 }
 
+.gallery-item {
+  padding: 0px;
+}
+.img-responsive{
+  max-height: 300px;
+  padding: 3px;
+}
+.swiper-pagination-fraction, .swiper-pagination-custom, .swiper-container-horizontal > .swiper-pagination-bullets{
+  bottom: 0px !important;
+}
+.swiper-pagination{
+  text-align: left !important;
+}
+.swiper-wrapper{
+  padding: 20px 0px !important;
+}
