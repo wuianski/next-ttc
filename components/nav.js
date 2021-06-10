@@ -11,7 +11,9 @@ import styles from "./nav.module.css";
 //import dynamic from "next/dynamic";
 //const Worklist = dynamic(() => import("../pages/works/index"));
 
-function Nav({ drawings }) {
+function Nav({ works }) {
+  console.log('Works: ', works);
+
   const [open, setOpen] = React.useState();
   const [gutter] = React.useState("small");
   const [modal] = React.useState(true);
@@ -83,13 +85,13 @@ function Nav({ drawings }) {
               height="full"
             >
               <Link href="/bio">
-                <Text className={styles.menuLink} onClick={() => {}}>
+                <Text className={styles.menuLink} onClick={() => { }}>
                   Biography
                 </Text>
               </Link>
-              <Text onClick={() => {}}>Contact</Text>
+              <Text onClick={() => { }}>Contact</Text>
               <Link href="/drawing">
-                <Text className={styles.menuLink} onClick={() => {}}>
+                <Text className={styles.menuLink} onClick={() => { }}>
                   Drawing
                 </Text>
               </Link>
@@ -100,21 +102,6 @@ function Nav({ drawings }) {
       )}
     </div>
   );
-}
-
-export async function getServerSideProps() {
-  const baseUrl = process.env.STRAPI_API_URL;
-  //console.log(baseUrl);
-  let drawingURL = `${baseUrl}/drawings`;
-
-  const res = await fetch(`${drawingURL}`);
-  const drawings = await res.json();
-
-  return {
-    props: {
-      drawings,
-    },
-  };
 }
 
 export default Nav;

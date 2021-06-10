@@ -3,15 +3,29 @@ import { Box } from "grommet";
 
 const Nav = dynamic(() => import("../components/nav"));
 
-function Home() {
+function Home({ works }) {
+
   return (
     <div>
-      <Nav />
+      <Nav works={works} />
       <Box pad="medium" align="start" margin={{ left: "12px" }}>
         <p>HOME PAGE is here!</p>
       </Box>
     </div>
   );
+}
+
+export async function getServerSideProps() {
+  const baseUrl = process.env.STRAPI_API_URL;
+  let worksURL = `${baseUrl}/works`;
+
+  const res = await fetch(`${worksURL}`);
+  const works = await res.json();
+  return {
+    props: {
+      works,
+    },
+  };
 }
 
 export default Home;
