@@ -9,11 +9,14 @@ import SwiperCore, { Pagination } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 SwiperCore.use(Pagination);
 
-function Work({ work, baseUrl }) {
+import ReactPlayer from "react-player";
+
+function Work({ works, work, baseUrl }) {
   return (
     <div>
-      <Nav />
+      <Nav works={works} />
       <Box pad="medium" align="start" margin={{ left: "12px" }}>
+        {work.video && <ReactPlayer url={work.video.link} controls />}
         <div>{work.title_en}</div>
         <div>{work.title}</div>
         <div>
@@ -66,17 +69,16 @@ export async function getStaticPaths() {
 // This also gets called at build time
 export async function getStaticProps({ params }) {
   const baseUrl = process.env.STRAPI_API_URL;
-  //console.log(baseUrl);
   let worksURL = `${baseUrl}/works`;
 
-  // params contains the post `id`.
-  // If the route is like /posts/1, then params.id is 1
   const res = await fetch(`${worksURL}/${params.id}`);
   const work = await res.json();
+  const res2 = await fetch(`${worksURL}`);
+  const works = await res2.json();
 
-  // Pass post data to the page via props
   return {
     props: {
+      works,
       work,
       baseUrl,
     },

@@ -12,7 +12,7 @@ import styles from "./nav.module.css";
 //const Worklist = dynamic(() => import("../pages/works/index"));
 
 function Nav({ works }) {
-  console.log('Works: ', works);
+  //console.log('Works: ', works);
 
   const [open, setOpen] = React.useState();
   const [gutter] = React.useState("small");
@@ -85,17 +85,30 @@ function Nav({ works }) {
               height="full"
             >
               <Link href="/bio">
-                <Text className={styles.menuLink} onClick={() => { }}>
+                <Text className={styles.menuLink} onClick={() => {}}>
                   Biography
                 </Text>
               </Link>
-              <Text onClick={() => { }}>Contact</Text>
+              <Text onClick={() => {}}>Contact</Text>
               <Link href="/drawing">
-                <Text className={styles.menuLink} onClick={() => { }}>
+                <Text className={styles.menuLink} onClick={() => {}}>
                   Drawing
                 </Text>
               </Link>
               <Text>Selected Works ↓↓↓ </Text>
+              <Text>
+                <div>
+                  {works.map((work) => (
+                    <div key={work.id}>
+                      <Link href="/works/[id]" as={`/works/` + work.id}>
+                        <Text className={styles.menuLink} onClick={onClose}>
+                          {work.title}
+                        </Text>
+                      </Link>
+                    </div>
+                  ))}
+                </div>
+              </Text>
             </Box>
           </Box>
         </Layer>

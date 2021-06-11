@@ -15,7 +15,7 @@ function Home({ works }) {
   );
 }
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   const baseUrl = process.env.STRAPI_API_URL;
   let worksURL = `${baseUrl}/works`;
 

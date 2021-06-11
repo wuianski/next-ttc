@@ -10,14 +10,14 @@ const LightGallery = dynamic(() => import("lightgallery/react"), {
 });
 //import "lightgallery/css/lightgallery.css";
 
-function Drawing({ drawings, baseUrl }) {
+function Drawing({ works, drawings, baseUrl }) {
   /*const myLoader = ({ src, width, quality }) => {
     return `${baseUrl}${src}?w=${width}&q=${quality || 90}`;
   };*/
 
   return (
     <div>
-      <Nav />
+      <Nav works={works} />
       <Box pad="medium" align="start" margin={{ left: "7px" }}>
         <div>
           <LightGallery plugins={[]}>
@@ -29,6 +29,7 @@ function Drawing({ drawings, baseUrl }) {
                 data-sub-html={drawing.description}
               >
                 <img
+                  key={drawing.image.order}
                   className="img-responsive"
                   src={baseUrl + drawing.image.formats.small.url}
                 />
@@ -46,18 +47,18 @@ function Drawing({ drawings, baseUrl }) {
 // direct database queries. See the "Technical details" section.
 
 export async function getStaticProps() {
-  // Call an external API endpoint to get posts.
-  // You can use any data fetching library
   const baseUrl = process.env.STRAPI_API_URL;
-  //console.log(baseUrl);
   let drawingURL = `${baseUrl}/drawings`;
+  let worksURL = `${baseUrl}/works`;
 
   const res = await fetch(`${drawingURL}`);
   const drawings = await res.json();
-  // By returning { props: { posts } }, the Blog component
-  // will receive `posts` as a prop at build time
+  const res2 = await fetch(`${worksURL}`);
+  const works = await res2.json();
+
   return {
     props: {
+      works,
       drawings,
       baseUrl,
     },

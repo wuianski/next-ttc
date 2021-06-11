@@ -1,10 +1,14 @@
-import '../styles/globals.css'
+import Layout from "../components/Layout";
+
+import "../styles/globals.css";
 import "swiper/swiper.scss";
 import "swiper/components/pagination/pagination.scss";
 import "lightgallery/css/lightgallery.css";
 
-function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+export default function App({ Component, pageProps }) {
+  return (
+    <Layout>
+      <Component {...pageProps} />
+    </Layout>
+  );
 }
-
-export default MyApp

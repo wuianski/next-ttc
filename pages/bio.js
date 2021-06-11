@@ -2,10 +2,10 @@ import { Box } from "grommet";
 import dynamic from "next/dynamic";
 const Nav = dynamic(() => import("../components/nav"));
 
-function Bio({  biography  }) {
+function Bio({ works, biography }) {
   return (
     <div>
-      <Nav />
+      <Nav works={works} />
       <Box pad="medium" align="start" margin={{ left: "12px" }}>
         <div
           className="artist_textTW fr"
@@ -24,13 +24,16 @@ export async function getStaticProps() {
   const baseUrl = process.env.STRAPI_API_URL;
   //console.log(baseUrl);
   let biographyURL = `${baseUrl}/biography`;
+  let worksURL = `${baseUrl}/works`;
 
   const res = await fetch(`${biographyURL}`);
   const biography = await res.json();
-  // By returning { props: { posts } }, the Blog component
-  // will receive `posts` as a prop at build time
+  const res2 = await fetch(`${worksURL}`);
+  const works = await res2.json();
+
   return {
     props: {
+      works,
       biography,
     },
   };
