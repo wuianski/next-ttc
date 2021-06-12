@@ -44,7 +44,7 @@ function Nav({ works }) {
         </Box>
         <Box align="end">
           <Button
-            icon={<Menu color="brand" />}
+            icon={<Menu color="black" />}
             name="Menu open"
             onClick={onOpen}
           />
@@ -70,45 +70,64 @@ function Nav({ works }) {
           >
             <Box align="end">
               <Button
-                icon={<Close color="brand" />}
+                icon={<Close color="black" />}
                 name="Menu close"
                 onClick={onClose}
+                className={styles.menuClose}
               />
             </Box>
 
             <Box
               pad="small"
               align="start"
-              margin={{ top: "54px" }}
+              margin={{ top: "-57px" }}
               gap="small"
               width="full"
               height="full"
             >
+              <Link href="/">
+                <Image
+                  src="/IMGs/logo.png"
+                  alt="Picture of logo"
+                  width={195 / 2}
+                  height={83 / 2}
+                  className={styles.logoImg}
+                />
+              </Link>
               <Link href="/bio">
-                <Text className={styles.menuLink} onClick={() => {}}>
-                  Biography
-                </Text>
+                <Box pad={{ top: "57px" }}>
+                  <Box className={styles.menuLink} onClick={() => {}}>
+                    Biography
+                  </Box>
+                </Box>
               </Link>
-              <Text onClick={() => {}}>Contact</Text>
+              <Box className={styles.menuLink} onClick={() => {}}>
+                Contact
+              </Box>
               <Link href="/drawing">
-                <Text className={styles.menuLink} onClick={() => {}}>
+                <Box className={styles.menuLink} onClick={() => {}}>
                   Drawing
-                </Text>
+                </Box>
               </Link>
-              <Text>Selected Works ↓↓↓ </Text>
-              <Text>
+              <Box className={styles.menuLink}>Selected Works ↓↓↓ </Box>
+              <Box pad={{ top: "30px" }}>
                 <div>
                   {works.map((work) => (
                     <div key={work.id}>
                       <Link href="/works/[id]" as={`/works/` + work.id}>
-                        <Text className={styles.menuLink} onClick={onClose}>
-                          {work.title}
-                        </Text>
+                        <Box className={styles.menuWorksLink} onClick={onClose}>
+                          <div>
+                            <span>{work.title_en}</span>
+                            <span className={styles.menuWorksLinkTW}>
+                               _ {work.title}
+                            </span>
+                          </div>
+                        </Box>
                       </Link>
                     </div>
                   ))}
                 </div>
-              </Text>
+              </Box>
             </Box>
           </Box>
         </Layer>

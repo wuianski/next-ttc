@@ -1,6 +1,22 @@
 .logoImg {
   cursor: pointer;
 }
+.menuClose{
+  z-index:999;
+}
 .menuLink {
   cursor: pointer;
+  font-weight: 300;
+  font-size: 72px;
+  line-height: 98px;
+}
+.menuWorksLink{
+  font-family: Noto Serif;
+  font-style: italic;
+  font-weight: normal;
+  font-size: 36px;
+  line-height: 80px;
+}
+.menuWorksLinkTW{
+  margin-left:10px;
 }

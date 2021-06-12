@@ -8,7 +8,7 @@ function Bio({ works, biography }) {
       <Nav works={works} />
       <Box pad="medium" align="start" margin={{ left: "12px" }}>
         <div
-          className="artist_textTW fr"
+          className="bioContent"
           dangerouslySetInnerHTML={{
             __html: biography.content,
           }}
