@@ -1,5 +1,7 @@
 import dynamic from "next/dynamic";
 import { Box } from "grommet";
+// video module
+import ReactPlayer from "react-player";
 
 const Nav = dynamic(() => import("../components/nav"));
 
@@ -8,9 +10,10 @@ function Home({ works }) {
   return (
     <div>
       <Nav works={works} />
-      <Box pad="medium" align="start" margin={{ left: "12px" }}>
-        <p>HOME PAGE is here!</p>
-      </Box>
+
+      <video autoPlay muted loop className="myVideo">
+        <source src={"/video/VidBg.mp4"} type="video/mp4" />
+      </video>
     </div>
   );
 }

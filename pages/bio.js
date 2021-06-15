@@ -6,13 +6,15 @@ function Bio({ works, biography }) {
   return (
     <div>
       <Nav works={works} />
-      <Box pad="medium" align="start" margin={{ left: "12px" }}>
-        <div
-          className="bioContent"
-          dangerouslySetInnerHTML={{
-            __html: biography.content,
-          }}
-        />
+      <Box background="white" margin={{ top: "-100px" }}>
+        <Box pad="medium" align="start" margin={{ left: "12px", top: "80px" }}>
+          <div
+            className="bioContent"
+            dangerouslySetInnerHTML={{
+              __html: biography.content,
+            }}
+          />
+        </Box>
       </Box>
     </div>
   );

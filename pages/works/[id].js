@@ -48,150 +48,156 @@ function Work({ works, work, baseUrl }) {
   return (
     <div>
       <Nav works={works} />
-      <Box pad="medium" align="start" margin={{ left: "12px", right: "12px" }}>
-        <div>
-          <Grid
-            columns={{ count: 1, size: "auto" }}
-            gap="0px"
-            pad={{ top: "10px", bottom: "60px" }}
-          >
-            <Box>
-              <div>
-                <Swiper pagination={{ clickable: true }}>
-                  <div>
-                    {work.images.map((image) => (
-                      <SwiperSlide key={image.id}>
-                        <div className="imgContainer" key={image.id}>
-                          <Image
-                            loader={myLoader}
-                            src={image.formats.large.url}
-                            alt={image.hash}
-                            width={1920}
-                            height={1080}
-                          />
-                        </div>
-                      </SwiperSlide>
+      <Box background="white" margin={{ top: "-100px" }}>
+        <Box
+          pad="medium"
+          align="start"
+          margin={{ left: "12px", right: "12px", top: "100px" }}
+        >
+          <div>
+            <Grid
+              columns={{ count: 1, size: "auto" }}
+              gap="0px"
+              pad={{ top: "10px", bottom: "60px" }}
+            >
+              <Box>
+                <div>
+                  <Swiper pagination={{ clickable: true }}>
+                    <div>
+                      {work.images.map((image) => (
+                        <SwiperSlide key={image.id}>
+                          <div className="imgContainer" key={image.id}>
+                            <Image
+                              loader={myLoader}
+                              src={image.formats.large.url}
+                              alt={image.hash}
+                              width={1920}
+                              height={1080}
+                            />
+                          </div>
+                        </SwiperSlide>
+                      ))}
+                    </div>
+                  </Swiper>
+                </div>
+              </Box>
+            </Grid>
+          </div>
+
+          <div>
+            <div className="workTitle">{work.title_en}</div>
+            <div className="workTitle">{work.title}</div>
+            <div className="workPlaceYear">
+              <span>{work.subtitle_en}</span>
+              <span>{work.subtitle},</span>
+              <span>{work.year}</span>
+            </div>
+          </div>
+
+          <div>
+            <Grommet theme={customBreakpoints} full className="RG">
+              <ResponsiveGrid
+                columns={["47.8%", "47.8%"]}
+                rows={["100%", "100%", "100%"]}
+                pad={{ top: "30px", bottom: "30px", right: "12px" }}
+                areas={{
+                  small: [
+                    { name: "one", start: [0, 0], end: [1, 0] },
+                    { name: "two", start: [0, 1], end: [1, 1] },
+                    { name: "three", start: [0, 2], end: [1, 2] },
+                  ],
+                  medium: [
+                    { name: "one", start: [0, 0], end: [0, 0] },
+                    { name: "two", start: [1, 0], end: [1, 0] },
+                    { name: "three", start: [1, 1], end: [1, 1] },
+                  ],
+
+                  large: [
+                    { name: "one", start: [0, 0], end: [0, 0] },
+                    { name: "two", start: [1, 0], end: [1, 0] },
+                    { name: "three", start: [1, 1], end: [1, 1] },
+                  ],
+                }}
+              >
+                <Box gridArea="one">
+                  <div
+                    className="workDesL"
+                    dangerouslySetInnerHTML={{
+                      __html: work.description_en_us.desctiption,
+                    }}
+                  />
+                  <div className="workDesL">
+                    {work.description_en_us.urls.map((url) => (
+                      <div>
+                        {url.id && (
+                          <div>
+                            <Box pad={{ top: "50px" }}>
+                              <div>review</div>
+                            </Box>
+                            <a href={url.link} target="_blank" rel="noreferrer">
+                              <p className="reviewLink">{url.link}</p>
+                            </a>
+                          </div>
+                        )}
+                      </div>
                     ))}
                   </div>
-                </Swiper>
-              </div>
-            </Box>
-          </Grid>
-        </div>
-
-        <div>
-          <div className="workTitle">{work.title_en}</div>
-          <div className="workTitle">{work.title}</div>
-          <div className="workPlaceYear">
-            <span>{work.subtitle_en}</span>
-            <span>{work.subtitle},</span>
-            <span>{work.year}</span>
-          </div>
-        </div>
-
-        <div>
-          <Grommet theme={customBreakpoints} full className="RG">
-            <ResponsiveGrid
-              columns={["47.8%", "47.8%"]}
-              rows={["100%", "100%", "100%"]}
-              pad={{ top: "30px", bottom: "30px", right: "12px" }}
-              areas={{
-                small: [
-                  { name: "one", start: [0, 0], end: [1, 0] },
-                  { name: "two", start: [0, 1], end: [1, 1] },
-                  { name: "three", start: [0, 2], end: [1, 2] },
-                ],
-                medium: [
-                  { name: "one", start: [0, 0], end: [0, 0] },
-                  { name: "two", start: [1, 0], end: [1, 0] },
-                  { name: "three", start: [1, 1], end: [1, 1] },
-                ],
-
-                large: [
-                  { name: "one", start: [0, 0], end: [0, 0] },
-                  { name: "two", start: [1, 0], end: [1, 0] },
-                  { name: "three", start: [1, 1], end: [1, 1] },
-                ],
-              }}
-            >
-              <Box gridArea="one">
-                <div
-                  className="workDesL"
-                  dangerouslySetInnerHTML={{
-                    __html: work.description_en_us.desctiption,
-                  }}
-                />
-                <div className="workDesL">
-                  {work.description_en_us.urls.map((url) => (
-                    <div>
-                      {url.id && (
-                        <div>
-                          <Box pad={{ top: "50px" }}>
-                            <div>review</div>
-                          </Box>
-                          <a href={url.link} target="_blank" rel="noreferrer">
-                            <p className="reviewLink">{url.link}</p>
-                          </a>
-                        </div>
-                      )}
-                    </div>
-                  ))}
-                </div>
-              </Box>
-
-              <Box gridArea="two">
-                <div
-                  className="workDesR"
-                  dangerouslySetInnerHTML={{
-                    __html: work.description_zh_tw.desctiption,
-                  }}
-                />
-                <div className="workDesR">
-                  {work.description_zh_tw.urls.map((url) => (
-                    <div>
-                      {url.id && (
-                        <div>
-                          <Box pad={{ top: "50px" }}>
-                            <div>評論</div>
-                          </Box>
-                          <a href={url.link} target="_blank" rel="noreferrer">
-                            <p className="reviewLink">{url.link}</p>
-                          </a>
-                        </div>
-                      )}
-                    </div>
-                  ))}
-                </div>
-              </Box>
-
-              <Box gridArea="three">
-                <div>
-                  {work.video && (
-                    <div className="player-wrapper">
-                      <ReactPlayer
-                        className="react-player"
-                        url={work.video.link}
-                        width="100%"
-                        height="100%"
-                        controls
-                      />
-                    </div>
-                  )}
-                </div>
-                <Box pad={{ top: "30px" }}>
-                  {work.video && (
-                    <div
-                      className="workDesR"
-                      dangerouslySetInnerHTML={{
-                        __html: work.video.description,
-                      }}
-                    />
-                  )}
                 </Box>
-              </Box>
-            </ResponsiveGrid>
-          </Grommet>
-        </div>
+
+                <Box gridArea="two">
+                  <div
+                    className="workDesR"
+                    dangerouslySetInnerHTML={{
+                      __html: work.description_zh_tw.desctiption,
+                    }}
+                  />
+                  <div className="workDesR">
+                    {work.description_zh_tw.urls.map((url) => (
+                      <div>
+                        {url.id && (
+                          <div>
+                            <Box pad={{ top: "50px" }}>
+                              <div>評論</div>
+                            </Box>
+                            <a href={url.link} target="_blank" rel="noreferrer">
+                              <p className="reviewLink">{url.link}</p>
+                            </a>
+                          </div>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                </Box>
+
+                <Box gridArea="three">
+                  <div>
+                    {work.video && (
+                      <div className="player-wrapper">
+                        <ReactPlayer
+                          className="react-player"
+                          url={work.video.link}
+                          width="100%"
+                          height="100%"
+                          controls
+                        />
+                      </div>
+                    )}
+                  </div>
+                  <Box pad={{ top: "30px" }}>
+                    {work.video && (
+                      <div
+                        className="vidDesR"
+                        dangerouslySetInnerHTML={{
+                          __html: work.video.description,
+                        }}
+                      />
+                    )}
+                  </Box>
+                </Box>
+              </ResponsiveGrid>
+            </Grommet>
+          </div>
+        </Box>
       </Box>
     </div>
   );

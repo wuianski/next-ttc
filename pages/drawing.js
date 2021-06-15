@@ -18,25 +18,27 @@ function Drawing({ works, drawings, baseUrl }) {
   return (
     <div>
       <Nav works={works} />
-      <Box pad="medium" align="start" margin={{ left: "7px" }}>
-        <div>
-          <LightGallery plugins={[]}>
-            {drawings.map((drawing) => (
-              <a
-                key={drawing.image.order}
-                className="gallery-item"
-                data-src={baseUrl + drawing.image.formats.large.url}
-                data-sub-html={drawing.description}
-              >
-                <img
+      <Box background="white" margin={{ top: "-100px" }}>
+        <Box pad="medium" align="start" margin={{ left: "7px", top: "120px" }}>
+          <div>
+            <LightGallery plugins={[]}>
+              {drawings.map((drawing) => (
+                <a
                   key={drawing.image.order}
-                  className="img-responsive"
-                  src={baseUrl + drawing.image.formats.small.url}
-                />
-              </a>
-            ))}
-          </LightGallery>
-        </div>
+                  className="gallery-item"
+                  data-src={baseUrl + drawing.image.formats.large.url}
+                  data-sub-html={drawing.description}
+                >
+                  <img
+                    key={drawing.image.order}
+                    className="img-responsive"
+                    src={baseUrl + drawing.image.formats.small.url}
+                  />
+                </a>
+              ))}
+            </LightGallery>
+          </div>
+        </Box>
       </Box>
     </div>
   );
