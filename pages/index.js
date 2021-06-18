@@ -1,12 +1,8 @@
-import dynamic from "next/dynamic";
-import { Box } from "grommet";
-// video module
-import ReactPlayer from "react-player";
-
-const Nav = dynamic(() => import("../components/nav"));
+import React from "react";
+import Nav from "../components/nav";
+import { fetchAPI } from "../lib/api";
 
 function Home({ works }) {
-
   return (
     <div>
       <Nav works={works} />
@@ -18,16 +14,13 @@ function Home({ works }) {
   );
 }
 
-export async function getStaticProps() {
-  const baseUrl = process.env.STRAPI_API_URL;
-  let worksURL = `${baseUrl}/works`;
+export async function getServerSideProps() {
+  // Run API calls in parallel
+  const [works] = await Promise.all([fetchAPI("/works")]);
 
-  const res = await fetch(`${worksURL}`);
-  const works = await res.json();
   return {
-    props: {
-      works,
-    },
+    props: { works },
+    //revalidate: 1,
   };
 }
 

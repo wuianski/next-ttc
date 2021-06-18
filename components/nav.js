@@ -3,17 +3,10 @@ import Link from "next/link";
 import Image from "next/image";
 
 import { Header, Box, Button, Layer, Text } from "grommet";
-import { Menu, Close } from "grommet-icons";
 const positions = ["left", "right", "top", "bottom", "center"];
-
 import styles from "./nav.module.css";
 
-//import dynamic from "next/dynamic";
-//const Worklist = dynamic(() => import("../pages/works/index"));
-
 function Nav({ works }) {
-  //console.log('Works: ', works);
-
   const [open, setOpen] = React.useState();
   const [gutter] = React.useState("small");
   const [modal] = React.useState(true);
@@ -30,60 +23,48 @@ function Nav({ works }) {
 
   return (
     <div>
-      <Header pad="medium" height="xsmall" margin={{ top: "12px" }}>
-        <Box
-          align="start"
-          margin={{ left: "12px" }}
-          className={styles.logoFixed}
-        >
-          <Link href="/">
-            <Image
-              src="/IMGs/logo2.png"
-              alt="Picture of logo"
-              width={48}
-              height={48}
-              className={styles.logoImg}
-            />
-          </Link>
-        </Box>
-        <Box align="end">
-          <button className={styles.primaryNav} onClick={onOpen}>
-            <svg
-              className={styles.lightSVG}
-              viewBox="0 0 56 56"
-            >
-              <g stroke="none" stroke-width="1">
-                <g fill-rule="nonzero" fill="#FFFFFF">
-                  <path
-                    d="M28,0C12.561,0,0,12.561,0,28s12.561,28,28,28s28-12.561,28-28S43.439,0,28,0z M28,54C13.663,54,2,42.336,2,28
+      <div className={styles.logoFixed}>
+        <Link href="/">
+          <Image
+            src="/IMGs/logo2.png"
+            alt="Picture of logo"
+            width={48}
+            height={48}
+            className={styles.logoImg}
+          />
+        </Link>
+      </div>
+      <div>
+        <button className={styles.primaryNav} onClick={onOpen}>
+          <svg className={styles.lightSVG} viewBox="0 0 56 56">
+            <g stroke="none" strokeWidth="1">
+              <g fillRule="nonzero" fill="#FFFFFF">
+                <path
+                  d="M28,0C12.561,0,0,12.561,0,28s12.561,28,28,28s28-12.561,28-28S43.439,0,28,0z M28,54C13.663,54,2,42.336,2,28
 		S13.663,2,28,2s26,11.664,26,26S42.337,54,28,54z"
-                  />
-                  <path d="M40,16H16c-0.553,0-1,0.448-1,1s0.447,1,1,1h24c0.553,0,1-0.448,1-1S40.553,16,40,16z" />
-                  <path d="M40,27H16c-0.553,0-1,0.448-1,1s0.447,1,1,1h24c0.553,0,1-0.448,1-1S40.553,27,40,27z" />
-                  <path d="M40,38H16c-0.553,0-1,0.448-1,1s0.447,1,1,1h24c0.553,0,1-0.448,1-1S40.553,38,40,38z" />
-                </g>
+                />
+                <path d="M40,16H16c-0.553,0-1,0.448-1,1s0.447,1,1,1h24c0.553,0,1-0.448,1-1S40.553,16,40,16z" />
+                <path d="M40,27H16c-0.553,0-1,0.448-1,1s0.447,1,1,1h24c0.553,0,1-0.448,1-1S40.553,27,40,27z" />
+                <path d="M40,38H16c-0.553,0-1,0.448-1,1s0.447,1,1,1h24c0.553,0,1-0.448,1-1S40.553,38,40,38z" />
               </g>
-            </svg>
+            </g>
+          </svg>
 
-            <svg
-              className={styles.darkSVG}
-              viewBox="0 0 56 56"
-            >
-              <g stroke="none" stroke-width="1">
-                <g fill-rule="nonzero" fill="#000000">
-                  <path
-                    d="M28,0C12.561,0,0,12.561,0,28s12.561,28,28,28s28-12.561,28-28S43.439,0,28,0z M28,54C13.663,54,2,42.336,2,28
+          <svg className={styles.darkSVG} viewBox="0 0 56 56">
+            <g stroke="none" strokeWidth="1">
+              <g fillRule="nonzero" fill="#000000">
+                <path
+                  d="M28,0C12.561,0,0,12.561,0,28s12.561,28,28,28s28-12.561,28-28S43.439,0,28,0z M28,54C13.663,54,2,42.336,2,28
 		S13.663,2,28,2s26,11.664,26,26S42.337,54,28,54z"
-                  />
-                  <path d="M40,16H16c-0.553,0-1,0.448-1,1s0.447,1,1,1h24c0.553,0,1-0.448,1-1S40.553,16,40,16z" />
-                  <path d="M40,27H16c-0.553,0-1,0.448-1,1s0.447,1,1,1h24c0.553,0,1-0.448,1-1S40.553,27,40,27z" />
-                  <path d="M40,38H16c-0.553,0-1,0.448-1,1s0.447,1,1,1h24c0.553,0,1-0.448,1-1S40.553,38,40,38z" />
-                </g>
+                />
+                <path d="M40,16H16c-0.553,0-1,0.448-1,1s0.447,1,1,1h24c0.553,0,1-0.448,1-1S40.553,16,40,16z" />
+                <path d="M40,27H16c-0.553,0-1,0.448-1,1s0.447,1,1,1h24c0.553,0,1-0.448,1-1S40.553,27,40,27z" />
+                <path d="M40,38H16c-0.553,0-1,0.448-1,1s0.447,1,1,1h24c0.553,0,1-0.448,1-1S40.553,38,40,38z" />
               </g>
-            </svg>
-          </button>
-        </Box>
-      </Header>
+            </g>
+          </svg>
+        </button>
+      </div>
 
       {open && (
         <Layer
@@ -105,12 +86,9 @@ function Nav({ works }) {
           >
             <Box align="end">
               <button className={styles.primaryNav} onClick={onClose}>
-                <svg
-                  className={styles.lightSVG}
-                  viewBox="0 0 294.843 294.843"
-                >
+                <svg className={styles.lightSVG} viewBox="0 0 294.843 294.843">
                   <g stroke="none" stroke-width="1">
-                    <g fill-rule="nonzero" fill="#FFFFFF">
+                    <g fillRule="nonzero" fill="#FFFFFF">
                       <path
                         d="M147.421,0C66.133,0,0,66.133,0,147.421s66.133,147.421,147.421,147.421c38.287,0,74.567-14.609,102.159-41.136
 		c2.389-2.296,2.464-6.095,0.167-8.483c-2.295-2.388-6.093-2.464-8.483-0.167c-25.345,24.367-58.672,37.786-93.842,37.786
@@ -134,12 +112,9 @@ function Nav({ works }) {
                   </g>
                 </svg>
 
-                <svg
-                  className={styles.darkSVG}
-                  viewBox="0 0 294.843 294.843"
-                >
+                <svg className={styles.darkSVG} viewBox="0 0 294.843 294.843">
                   <g stroke="none" stroke-width="1">
-                    <g fill-rule="nonzero" fill="#000000">
+                    <g fillRule="nonzero" fill="#000000">
                       <path
                         d="M147.421,0C66.133,0,0,66.133,0,147.421s66.133,147.421,147.421,147.421c38.287,0,74.567-14.609,102.159-41.136
 		c2.389-2.296,2.464-6.095,0.167-8.483c-2.295-2.388-6.093-2.464-8.483-0.167c-25.345,24.367-58.672,37.786-93.842,37.786

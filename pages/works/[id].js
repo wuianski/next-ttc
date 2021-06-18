@@ -1,10 +1,11 @@
 import React from "react";
-import Image from "next/image";
+import Nav from "../../components/nav";
+import { fetchAPI } from "../../lib/api";
 import { deepMerge } from "grommet/utils";
 import { grommet } from "grommet/themes";
 import { Box, Grid, ResponsiveContext, Grommet } from "grommet";
-import dynamic from "next/dynamic";
-const Nav = dynamic(() => import("../../components/nav"));
+import Image from "next/image";
+import ImageSwiper from "../../components/imageSwiper";
 
 // swiper module, import css in _app.js
 import SwiperCore, { Pagination } from "swiper";
@@ -13,7 +14,7 @@ SwiperCore.use(Pagination);
 // video module
 import ReactPlayer from "react-player";
 
-function Work({ works, work, baseUrl }) {
+function Work({ worksList, work, baseUrl }) {
   // image loader
   const myLoader = ({ src, width, quality }) => {
     return `${baseUrl}${src}?w=${width}&q=${quality || 75}`;
@@ -47,43 +48,27 @@ function Work({ works, work, baseUrl }) {
 
   return (
     <div>
-      <Nav works={works} />
-      <Box background="white" margin={{ top: "-100px" }}>
+      <Nav works={worksList} />
+      <div>
+        <Swiper pagination={{ clickable: true }}>
+          <div>
+            {work.images.map((image) => (
+              <SwiperSlide key={image.id}>
+                <div className="imgContainer" key={image.id}>
+                  <ImageSwiper image={image} />
+                </div>
+              </SwiperSlide>
+            ))}
+          </div>
+        </Swiper>
+      </div>
+      <div>
         <Box
           pad="medium"
           align="start"
-          margin={{ left: "12px", right: "12px", top: "100px" }}
+          margin={{ left: "12px", right: "12px", top: "0px" }}
+          background="white"
         >
-          <div>
-            <Grid
-              columns={{ count: 1, size: "auto" }}
-              gap="0px"
-              pad={{ top: "10px", bottom: "60px" }}
-            >
-              <Box>
-                <div>
-                  <Swiper pagination={{ clickable: true }}>
-                    <div>
-                      {work.images.map((image) => (
-                        <SwiperSlide key={image.id}>
-                          <div className="imgContainer" key={image.id}>
-                            <Image
-                              loader={myLoader}
-                              src={image.formats.large.url}
-                              alt={image.hash}
-                              width={1920}
-                              height={1080}
-                            />
-                          </div>
-                        </SwiperSlide>
-                      ))}
-                    </div>
-                  </Swiper>
-                </div>
-              </Box>
-            </Grid>
-          </div>
-
           <div>
             <div className="workTitle">{work.title_en}</div>
             <div className="workTitle">{work.title}</div>
@@ -198,47 +183,32 @@ function Work({ works, work, baseUrl }) {
             </Grommet>
           </div>
         </Box>
-      </Box>
+      </div>
     </div>
   );
 }
 
-// This function gets called at build time
 export async function getStaticPaths() {
-  const baseUrl = process.env.STRAPI_API_URL;
-  //console.log(baseUrl);
-  let worksURL = `${baseUrl}/works`;
+  const works = await fetchAPI("/works");
 
-  // Call an external API endpoint to get posts
-  const res = await fetch(`${worksURL}`);
-  const works = await res.json();
-
-  // Get the paths we want to pre-render based on posts
-  const paths = works.map((work) => ({
-    params: { id: work.id.toString() },
-  }));
-
-  // We'll pre-render only these paths at build time.
-  // { fallback: false } means other routes should 404.
-  return { paths, fallback: false };
+  return {
+    paths: works.map((work) => ({
+      params: {
+        id: work.id.toString(),
+      },
+    })),
+    fallback: false,
+  };
 }
 
 // This also gets called at build time
 export async function getStaticProps({ params }) {
-  const baseUrl = process.env.STRAPI_API_URL;
-  let worksURL = `${baseUrl}/works`;
-
-  const res = await fetch(`${worksURL}/${params.id}`);
-  const work = await res.json();
-  const res2 = await fetch(`${worksURL}`);
-  const works = await res2.json();
+  const works = await fetchAPI(`/works?id=${params.id}`);
+  const worksList = await fetchAPI("/works");
 
   return {
-    props: {
-      works,
-      work,
-      baseUrl,
-    },
+    props: { work: works[0], worksList },
+    revalidate: 1,
   };
 }
 

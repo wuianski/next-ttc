@@ -59,14 +59,23 @@ a {
   width: 100%;
   height: auto;
 }
-.swiper-pagination-fraction, .swiper-pagination-custom, .swiper-container-horizontal > .swiper-pagination-bullets{
-  bottom: 0px !important;
+.imgContainer img{
+  object-fit: cover;
+  width: 100vw;
+  height: 100vh;
 }
 .swiper-pagination{
   text-align: left !important;
+  margin-left: 36px;
+  margin-bottom: 12px;
 }
-.swiper-wrapper{
-  padding: 20px 0px !important;
+.swiper-pagination-bullet {
+  width: 8px;
+  height: 8px;
+  display: inline-block;
+  border-radius: 50%;
+  background: #fff;
+  opacity: 1;
 }
 .RG{
   height:100% !important;
@@ -171,7 +180,7 @@ a {
 /* larger screen */
 @media (min-width: 1025px) {
    .imgContainer{
-    max-width: 75%;
+    /*max-width: 75%;*/
   }
 }
 

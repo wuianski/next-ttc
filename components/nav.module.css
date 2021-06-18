@@ -31,8 +31,10 @@
 .logoFixed{
   position:fixed;
   z-index:8;
-}
+  right: 36px;
+  top: 36px;
 
+}
 .primaryNav {
 	max-width: 50px;
 	width: 100px;
@@ -40,8 +42,8 @@
 	background: none;
 	border: none;
 	padding: 0;
-	top: 35px;
-	right: 40px;
+	top: 95px;
+	right: 36px;
   z-index: 9;
 	mix-blend-mode: difference;
 }
@@ -78,6 +80,9 @@
     line-height: 27px;
   }
   /* logo mix blend */
+  .logoFixed{
+    right: 24px;
+  }
   .primaryNav {
 	  right: 24px;
   }

@@ -1,13 +1,14 @@
+import React from "react";
+import Nav from "../components/nav";
+import { fetchAPI } from "../lib/api";
 import { Box } from "grommet";
-import dynamic from "next/dynamic";
-const Nav = dynamic(() => import("../components/nav"));
 
 function Bio({ works, biography }) {
   return (
     <div>
       <Nav works={works} />
-      <Box background="white" margin={{ top: "-100px" }}>
-        <Box pad="medium" align="start" margin={{ left: "12px", top: "80px" }}>
+      <Box background="white" margin={{ top: "0px" }}>
+        <Box pad="medium" align="start" margin={{ left: "12px", top: "130px" }}>
           <div
             className="bioContent"
             dangerouslySetInnerHTML={{
@@ -20,24 +21,14 @@ function Bio({ works, biography }) {
   );
 }
 
-export async function getStaticProps() {
-  // Call an external API endpoint to get posts.
-  // You can use any data fetching library
-  const baseUrl = process.env.STRAPI_API_URL;
-  //console.log(baseUrl);
-  let biographyURL = `${baseUrl}/biography`;
-  let worksURL = `${baseUrl}/works`;
-
-  const res = await fetch(`${biographyURL}`);
-  const biography = await res.json();
-  const res2 = await fetch(`${worksURL}`);
-  const works = await res2.json();
+export async function getServerSideProps() {
+  // Run API calls in parallel
+  const [works] = await Promise.all([fetchAPI("/works")]);
+  const [biography] = await Promise.all([fetchAPI("/biography")]);
 
   return {
-    props: {
-      works,
-      biography,
-    },
+    props: { works, biography },
+    //revalidate: 1,
   };
 }
 
