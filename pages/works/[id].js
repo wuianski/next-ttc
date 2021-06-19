@@ -112,16 +112,25 @@ function Work({ worksList, work, baseUrl }) {
                     }}
                   />
                   <div className="workDesL">
+                    <Box pad={{ top: "50px", bottom: "20px" }}>
+                      {work.description_en_us.urls.length > 0 && (
+                        <div>review ↓↓↓ </div>
+                      )}
+                    </Box>
                     {work.description_en_us.urls.map((url) => (
                       <div>
                         {url.id && (
                           <div>
                             <Box pad={{ top: "50px" }}>
-                              <div>review</div>
+                              <div>{url.name}</div>
+                              <a
+                                href={url.link}
+                                target="_blank"
+                                rel="noreferrer"
+                              >
+                                <p className="reviewLink">{url.link}</p>
+                              </a>
                             </Box>
-                            <a href={url.link} target="_blank" rel="noreferrer">
-                              <p className="reviewLink">{url.link}</p>
-                            </a>
                           </div>
                         )}
                       </div>
@@ -137,16 +146,25 @@ function Work({ worksList, work, baseUrl }) {
                     }}
                   />
                   <div className="workDesR">
+                    <Box pad={{ top: "50px", bottom: "20px" }}>
+                      {work.description_zh_tw.urls.length > 0 && (
+                        <div>評論 ↓↓↓ </div>
+                      )}
+                    </Box>
                     {work.description_zh_tw.urls.map((url) => (
                       <div>
                         {url.id && (
                           <div>
-                            <Box pad={{ top: "50px" }}>
-                              <div>評論</div>
+                            <Box pad={{ top: "10px" }}>
+                              <div>{url.name}</div>
+                              <a
+                                href={url.link}
+                                target="_blank"
+                                rel="noreferrer"
+                              >
+                                <p className="reviewLink">{url.link}</p>
+                              </a>
                             </Box>
-                            <a href={url.link} target="_blank" rel="noreferrer">
-                              <p className="reviewLink">{url.link}</p>
-                            </a>
                           </div>
                         )}
                       </div>

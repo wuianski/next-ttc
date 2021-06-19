@@ -109,11 +109,13 @@ a {
   padding-left:30px;
   text-justify: distribute;
   text-align: justify;
-  line-height:30px;
+  line-height:28px;
   letter-spacing: 0.06em;
 }
 .reviewLink{
   text-decoration: underline;
+  font-size: 15px;
+  margin-top: 0px;
 }
 .player-wrapper {
   position: relative;
