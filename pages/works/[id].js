@@ -9,9 +9,10 @@ import ImageSwiper from "../../components/imageSwiper";
 
 // slider module, import css in _app.js
 import AwesomeSlider from "react-awesome-slider";
-
 // video module
 import ReactPlayer from "react-player";
+
+import { useRouter } from "next/router";
 
 function Work({ worksList, work, baseUrl }) {
   // image loader
@@ -44,6 +45,9 @@ function Work({ worksList, work, baseUrl }) {
       </Grid>
     );
   };
+
+  const router = useRouter();
+  const { id } = router.query;
 
   return (
     <div>
@@ -201,7 +205,7 @@ function Work({ worksList, work, baseUrl }) {
   );
 }
 
-export async function getStaticPaths() {
+/*export async function getStaticPaths() {
   const works = await fetchAPI("/works");
 
   return {
@@ -212,16 +216,16 @@ export async function getStaticPaths() {
     })),
     fallback: false,
   };
-}
+}*/
 
 // This also gets called at build time
-export async function getStaticProps({ params }) {
+export async function getServerSideProps({ params }) {
   const works = await fetchAPI(`/works?id=${params.id}`);
   const worksList = await fetchAPI("/works");
 
   return {
     props: { work: works[0], worksList },
-    revalidate: 1,
+    //revalidate: 1,
   };
 }
 
