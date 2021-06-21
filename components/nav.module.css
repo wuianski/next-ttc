@@ -33,7 +33,7 @@
   z-index:8;
   right: 36px;
   top: 36px;
-
+  mix-blend-mode: difference;
 }
 .primaryNav {
 	max-width: 50px;

@@ -7,10 +7,9 @@ import { Box, Grid, ResponsiveContext, Grommet } from "grommet";
 import Image from "next/image";
 import ImageSwiper from "../../components/imageSwiper";
 
-// swiper module, import css in _app.js
-import SwiperCore, { Pagination } from "swiper";
-import { Swiper, SwiperSlide } from "swiper/react";
-SwiperCore.use(Pagination);
+// slider module, import css in _app.js
+import AwesomeSlider from "react-awesome-slider";
+
 // video module
 import ReactPlayer from "react-player";
 
@@ -49,18 +48,14 @@ function Work({ worksList, work, baseUrl }) {
   return (
     <div>
       <Nav works={worksList} />
-      <div>
-        <Swiper pagination={{ clickable: true }}>
-          <div>
-            {work.images.map((image) => (
-              <SwiperSlide key={image.id}>
-                <div className="imgContainer" key={image.id}>
-                  <ImageSwiper image={image} />
-                </div>
-              </SwiperSlide>
-            ))}
-          </div>
-        </Swiper>
+      <div className="imgContainer">
+        <AwesomeSlider bullets={true} fillParent={true}>
+          {work.images.map((image) => (
+            <div key={image.id}>
+              <ImageSwiper image={image} />
+            </div>
+          ))}
+        </AwesomeSlider>
       </div>
       <div>
         <Box

@@ -56,10 +56,24 @@ a {
 /* works desktop */
 .imgContainer{
   position: relative;
-  width: 100%;
-  height: auto;
+  width: 100vw;
+  height: 100vh
 }
-.imgContainer img{
+.awssld__bullets button{
+  width: 10px !important;
+  height: 10px !important;
+}
+.awssld__bullets{
+  bottom: 40px !important;
+  z-index: 9;
+}
+.awssld__bullets--active{
+  background:#fff !important;
+}
+.awssld__controls__arrow-left::before, .awssld__controls__arrow-left::after, .awssld__controls__arrow-right::before, .awssld__controls__arrow-right::after{
+  background-color: #fff !important;
+}
+/*.imgContainer img{
   object-fit: cover;
   width: 100vw;
   height: 100vh;
@@ -76,7 +90,7 @@ a {
   border-radius: 50%;
   background: #fff;
   opacity: 1;
-}
+}*/
 .RG{
   height:100% !important;
 }
