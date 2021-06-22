@@ -53,7 +53,7 @@ function Work({ worksList, work, baseUrl }) {
     <div>
       <Nav works={worksList} />
       <div className="imgContainer">
-        <AwesomeSlider bullets={true} fillParent={true}>
+        <AwesomeSlider bullets={true} fillParent={true} transitionDelay={500}>
           {work.images.map((image) => (
             <div key={image.id}>
               <ImageSwiper image={image} />
@@ -111,13 +111,13 @@ function Work({ worksList, work, baseUrl }) {
                     }}
                   />
                   <div className="workDesL">
-                    <Box pad={{ top: "50px", bottom: "20px" }}>
-                      {work.description_en_us.urls.length > 0 && (
+                    {work.description_en_us.urls.length > 0 && (
+                      <Box pad={{ top: "50px", bottom: "20px" }}>
                         <div>review ↓↓↓ </div>
-                      )}
-                    </Box>
+                      </Box>
+                    )}
                     {work.description_en_us.urls.map((url) => (
-                      <div>
+                      <div key={url.id}>
                         {url.id && (
                           <div>
                             <Box pad={{ top: "50px" }}>
@@ -151,7 +151,7 @@ function Work({ worksList, work, baseUrl }) {
                       )}
                     </Box>
                     {work.description_zh_tw.urls.map((url) => (
-                      <div>
+                      <div key={url.id}>
                         {url.id && (
                           <div>
                             <Box pad={{ top: "10px" }}>
@@ -171,7 +171,7 @@ function Work({ worksList, work, baseUrl }) {
                   </div>
                 </Box>
 
-                <Box gridArea="three">
+                <Box gridArea="three" className="vid_blk">
                   <div>
                     {work.video && (
                       <div className="player-wrapper">

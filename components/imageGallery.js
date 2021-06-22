@@ -5,13 +5,12 @@ const ImageGallery = ({ image, description }) => {
 
   return (
     <a
-      key={image.order}
+      key={image.id}
       className="gallery-item"
       data-src={imageUrl}
       data-sub-html={description}
     >
       <img
-        key={image.id}
         className="img-responsive"
         src={imageUrl}
         alt={image.alternativeText || image.name}

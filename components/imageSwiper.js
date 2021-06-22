@@ -1,13 +1,13 @@
 import { getStrapiMedia } from "../lib/media";
 
-const ImageSwiper = ({ image, style }) => {
+const ImageSwiper = ({ image }) => {
   const imageUrl = getStrapiMedia(image);
 
   return (
     <img
       src={imageUrl}
       alt={image.alternativeText || image.name}
-      style={style}
+      className="imgSwiper"
     />
   );
 };

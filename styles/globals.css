@@ -73,6 +73,9 @@ a {
 .awssld__controls__arrow-left::before, .awssld__controls__arrow-left::after, .awssld__controls__arrow-right::before, .awssld__controls__arrow-right::after{
   background-color: #fff !important;
 }
+.imgSwiper{
+  height: unset;
+}
 /*.imgContainer img{
   object-fit: cover;
   width: 100vw;
@@ -150,6 +153,9 @@ a {
   line-height:22px;
   letter-spacing: 0.06em;
 }
+.vid_blk{
+    margin-top: 50px;
+  }
 
 
 /* mobile */
@@ -190,7 +196,13 @@ a {
   .vidDesR{
     padding-left:0px;
     padding-right:24px;
-}
+  }
+  .imgContainer{
+    height:100vw;
+  }
+  .imgSwiper{
+    height:100vw;
+  }
 }
 
 /* larger screen */
