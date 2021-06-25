@@ -11,6 +11,7 @@ const ImageGallery = ({ image, description, order }) => {
       data-sub-html={description}
     >
       <img
+        key={order}
         className="img-responsive"
         src={imageUrl}
         alt={image.alternativeText || image.name}

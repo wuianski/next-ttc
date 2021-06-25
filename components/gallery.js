@@ -8,7 +8,7 @@ const LightGallery = dynamic(() => import("lightgallery/react"), {
 });
 
 const Gallery = ({ drawings }) => {
-  drawings.sort((a, b) => a.order + b.order);
+  drawings.sort((a, b) => b.order - a.order);
   return (
     <div>
       <LightGallery plugins={[]}>
