@@ -1,11 +1,11 @@
 import { getStrapiMedia } from "../lib/media";
 
-const ImageGallery = ({ image, description }) => {
+const ImageGallery = ({ image, description, order }) => {
   const imageUrl = getStrapiMedia(image);
 
   return (
     <a
-      key={image.id}
+      key={order}
       className="gallery-item"
       data-src={imageUrl}
       data-sub-html={description}

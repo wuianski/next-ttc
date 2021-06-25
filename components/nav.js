@@ -148,20 +148,22 @@ function Nav({ works }) {
               width="full"
               height="full"
             >
-              <Link href="/bio">
+              <div>
+                <Link href="/bio">
+                  <div className={styles.menuLink} onClick={() => {}}>
+                    Biography
+                  </div>
+                </Link>
                 <div className={styles.menuLink} onClick={() => {}}>
-                  Biography
+                  Contact
                 </div>
-              </Link>
-              <div className={styles.menuLink} onClick={() => {}}>
-                Contact
+                <Link href="/drawing">
+                  <div className={styles.menuLink} onClick={() => {}}>
+                    Drawing
+                  </div>
+                </Link>
+                <div className={styles.menuLink}>Selected Works ↓↓↓ </div>
               </div>
-              <Link href="/drawing">
-                <div className={styles.menuLink} onClick={() => {}}>
-                  Drawing
-                </div>
-              </Link>
-              <div className={styles.menuLink}>Selected Works ↓↓↓ </div>
               <Box pad={{ top: "30px" }}>
                 <div>
                   {works.map((work) => (
