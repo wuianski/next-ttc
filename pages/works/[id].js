@@ -14,7 +14,7 @@ import ReactPlayer from "react-player";
 
 import { useRouter } from "next/router";
 
-function Work({ worksList, work, baseUrl }) {
+function Work({ worksList, work, baseUrl, contact }) {
   // image loader
   const myLoader = ({ src, width, quality }) => {
     return `${baseUrl}${src}?w=${width}&q=${quality || 75}`;
@@ -51,7 +51,7 @@ function Work({ worksList, work, baseUrl }) {
 
   return (
     <div>
-      <Nav works={worksList} />
+      <Nav works={worksList} contact={contact} />
       <div className="imgContainer">
         <AwesomeSlider bullets={true} fillParent={true} transitionDelay={500}>
           {work.images.map((image) => (
@@ -222,9 +222,10 @@ function Work({ worksList, work, baseUrl }) {
 export async function getServerSideProps({ params }) {
   const works = await fetchAPI(`/works?id=${params.id}`);
   const worksList = await fetchAPI("/works");
+  const contact = await fetchAPI("/contact");
 
   return {
-    props: { work: works[0], worksList },
+    props: { work: works[0], worksList, contact },
     //revalidate: 1,
   };
 }

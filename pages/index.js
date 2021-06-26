@@ -2,10 +2,10 @@ import React from "react";
 import Nav from "../components/nav";
 import { fetchAPI } from "../lib/api";
 
-function Home({ works }) {
+function Home({ works, contact }) {
   return (
     <div>
-      <Nav works={works} />
+      <Nav works={(works)} contact={(contact)}/>
 
       <video autoPlay muted loop className="myVideo">
         <source src={"/video/VidBg.mp4"} type="video/mp4" />
@@ -16,10 +16,13 @@ function Home({ works }) {
 
 export async function getServerSideProps() {
   // Run API calls in parallel
-  const [works] = await Promise.all([fetchAPI("/works")]);
+  const [works, contact] = await Promise.all([
+    fetchAPI("/works"),
+    fetchAPI("/contact"),
+  ]);
 
   return {
-    props: { works },
+    props: { works, contact },
     //revalidate: 1,
   };
 }

@@ -6,7 +6,7 @@ import { Header, Box, Button, Layer, Text } from "grommet";
 const positions = ["left", "right", "top", "bottom", "center"];
 import styles from "./nav.module.css";
 
-function Nav({ works }) {
+function Nav({ works, contact }) {
   const [open, setOpen] = React.useState();
   const [gutter] = React.useState("small");
   const [modal] = React.useState(true);
@@ -154,8 +154,8 @@ function Nav({ works }) {
                     Biography
                   </div>
                 </Link>
-                <div className={styles.menuLink} onClick={() => {}}>
-                  Contact
+                <div className={styles.menuLink}>
+                  <a href={`mailto:` + contact.content}>Contact</a>
                 </div>
                 <Link href="/drawing">
                   <div className={styles.menuLink} onClick={() => {}}>
