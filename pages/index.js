@@ -8,7 +8,7 @@ function Home({ works, contact }) {
       <Nav works={works} contact={contact} />
       <div class="vimeo-wrapper">
         <iframe
-          src="https://player.vimeo.com/video/509380798?background=1"
+          src="https://player.vimeo.com/video/568021273?background=1"
           frameborder="0"
           allow="autoplay; fullscreen"
           allowfullscreen
