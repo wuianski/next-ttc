@@ -13,11 +13,11 @@ const Gallery = ({ drawings }) => {
     <div>
       <LightGallery plugins={[]}>
         {drawings.map((drawing) => (
-            <ImageGallery
-              image={drawing.image.formats.large}
-              description={drawing.description}
-              order={drawing.order}
-            />
+          <ImageGallery
+            image={drawing.image.formats.large}
+            description={drawing.description}
+            order={drawing.order}
+          />
         ))}
       </LightGallery>
     </div>

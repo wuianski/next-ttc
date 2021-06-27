@@ -3,10 +3,10 @@ import Nav from "../components/nav";
 import { fetchAPI } from "../lib/api";
 import { Box } from "grommet";
 
-function Bio({ works, biography }) {
+function Bio({ works, biography, contact }) {
   return (
     <div>
-      <Nav works={works} />
+      <Nav works={works} contact={contact} />
       <Box background="white" margin={{ top: "0px" }}>
         <Box pad="medium" align="start" margin={{ left: "12px", top: "130px" }}>
           <div
@@ -23,11 +23,14 @@ function Bio({ works, biography }) {
 
 export async function getServerSideProps() {
   // Run API calls in parallel
-  const [works] = await Promise.all([fetchAPI("/works")]);
-  const [biography] = await Promise.all([fetchAPI("/biography")]);
+  const [works, biography, contact] = await Promise.all([
+    fetchAPI("/works"),
+    fetchAPI("/biography"),
+    fetchAPI("/contact"),
+  ]);
 
   return {
-    props: { works, biography },
+    props: { works, biography, contact },
     //revalidate: 1,
   };
 }

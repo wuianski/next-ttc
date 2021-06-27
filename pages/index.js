@@ -5,11 +5,15 @@ import { fetchAPI } from "../lib/api";
 function Home({ works, contact }) {
   return (
     <div>
-      <Nav works={(works)} contact={(contact)}/>
-
-      <video autoPlay muted loop className="myVideo">
-        <source src={"/video/VidBg.mp4"} type="video/mp4" />
-      </video>
+      <Nav works={works} contact={contact} />
+      <div class="vimeo-wrapper">
+        <iframe
+          src="https://player.vimeo.com/video/509380798?background=1"
+          frameborder="0"
+          allow="autoplay; fullscreen"
+          allowfullscreen
+        ></iframe>
+      </div>
     </div>
   );
 }

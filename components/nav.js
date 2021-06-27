@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 
-import { Header, Box, Button, Layer, Text } from "grommet";
+import { Box, Layer } from "grommet";
 const positions = ["left", "right", "top", "bottom", "center"];
 import styles from "./nav.module.css";
 
