@@ -4,7 +4,6 @@ import { fetchAPI } from "../../lib/api";
 import { deepMerge } from "grommet/utils";
 import { grommet } from "grommet/themes";
 import { Box, Grid, ResponsiveContext, Grommet } from "grommet";
-import Image from "next/image";
 import ImageSwiper from "../../components/imageSwiper";
 
 // slider module, import css in _app.js
@@ -13,6 +12,7 @@ import AwesomeSlider from "react-awesome-slider";
 import ReactPlayer from "react-player";
 
 import { useRouter } from "next/router";
+import Head from "next/head";
 
 function Work({ worksList, work, baseUrl, contact }) {
   // image loader
@@ -51,6 +51,11 @@ function Work({ worksList, work, baseUrl, contact }) {
 
   return (
     <div>
+      <Head>
+        <title>Works - TingTongChang</title>
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
       <Nav works={worksList} contact={contact} />
       <div className="imgContainer">
         <AwesomeSlider bullets={true} fillParent={true} transitionDelay={500}>

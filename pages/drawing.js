@@ -3,6 +3,7 @@ import Nav from "../components/nav";
 import { fetchAPI } from "../lib/api";
 import { Box } from "grommet";
 import Gallery from "../components/gallery";
+import Head from "next/head";
 
 function Drawing({ works, drawings, contact }) {
   /*const myLoader = ({ src, width, quality }) => {
@@ -11,6 +12,12 @@ function Drawing({ works, drawings, contact }) {
 
   return (
     <div>
+      <Head>
+        <title>Drawing - TingTongChang</title>
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
+
       <Nav works={works} contact={contact} />
       <Box background="white" margin={{ top: "0px" }}>
         <Box pad="medium" align="start" margin={{ left: "7px", top: "160px" }}>

@@ -1,17 +1,24 @@
 import React from "react";
 import Nav from "../components/nav";
 import { fetchAPI } from "../lib/api";
+import Head from "next/head";
 
 function Home({ works, contact }) {
   return (
     <div>
+      <Head>
+        <title>TingTongChang</title>
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
+
       <Nav works={works} contact={contact} />
-      <div class="vimeo-wrapper">
+      <div className="vimeo-wrapper">
         <iframe
           src="https://player.vimeo.com/video/568021273?background=1"
-          frameborder="0"
+          frameBorder="0"
           allow="autoplay; fullscreen"
-          allowfullscreen
+          allowFullScreen
         ></iframe>
       </div>
     </div>
