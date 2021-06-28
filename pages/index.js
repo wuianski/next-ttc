@@ -3,7 +3,7 @@ import Nav from "../components/nav";
 import { fetchAPI } from "../lib/api";
 import Head from "next/head";
 
-function Home({ works, contact }) {
+function Home({ works, contact, frontPageVideo }) {
   return (
     <div>
       <Head>
@@ -15,7 +15,7 @@ function Home({ works, contact }) {
       <Nav works={works} contact={contact} />
       <div className="vimeo-wrapper">
         <iframe
-          src="https://player.vimeo.com/video/568021273?background=1"
+          src={frontPageVideo.VideoUrl}
           frameBorder="0"
           allow="autoplay; fullscreen"
           allowFullScreen
@@ -27,13 +27,14 @@ function Home({ works, contact }) {
 
 export async function getServerSideProps() {
   // Run API calls in parallel
-  const [works, contact] = await Promise.all([
+  const [works, contact, frontPageVideo] = await Promise.all([
     fetchAPI("/works"),
     fetchAPI("/contact"),
+    fetchAPI("/front-page-video"),
   ]);
 
   return {
-    props: { works, contact },
+    props: { works, contact, frontPageVideo },
     //revalidate: 1,
   };
 }
