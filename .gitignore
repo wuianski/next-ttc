@@ -218,3 +218,6 @@ $RECYCLE.BIN/
 
 .env.*
 !.env.template
+
+public/res/**/*
+!public/res/.gitkeep
