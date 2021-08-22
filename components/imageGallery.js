@@ -1,20 +1,16 @@
-import { getStrapiMedia } from "../lib/media";
-
-const ImageGallery = ({ image, description, order }) => {
-  const imageUrl = getStrapiMedia(image);
-
+const ImageGallery = ({ drawing }) => {
   return (
     <a
-      key={order}
+      key={drawing.order}
       className="gallery-item"
-      data-src={imageUrl}
-      data-sub-html={description}
+      data-src={drawing.url}
+      data-sub-html={drawing.description}
     >
       <img
-        key={order}
+        key={drawing.order}
         className="img-responsive"
-        src={imageUrl}
-        alt={image.alternativeText || image.name}
+        src={drawing.url}
+        alt={drawing.alt}
       />
     </a>
   );
