@@ -52,9 +52,10 @@ function Work({ worksList, work, baseUrl, contact }) {
   return (
     <div>
       <Head>
-        <title>Works - TingTongChang</title>
+        <title>{work.title_en} - TingTongChang</title>
         <meta charSet="utf-8" />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <meta name="description" content={work.title_en} />
       </Head>
       <Nav works={worksList} contact={contact} />
       <div className="imgContainer">

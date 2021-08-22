@@ -16,6 +16,7 @@ function Drawing({ works, drawings, contact }) {
         <title>Drawing - TingTongChang</title>
         <meta charSet="utf-8" />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <meta name="description" content="the collection of drawing practice" />
       </Head>
 
       <Nav works={works} contact={contact} />
