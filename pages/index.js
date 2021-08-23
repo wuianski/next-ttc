@@ -7,10 +7,10 @@ function Home({ works, contact, frontPageVideo }) {
   return (
     <div>
       <Head>
-        <title>TingTongChang</title>
+        <title>Ting Tong Chang 張碩尹</title>
         <meta charSet="utf-8" />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-        <meta name="description" content="張碩尹 Ting Tong Chang's website." />
+        <meta name="description" content="Ting Tong Chang 張碩尹" />
         <meta
           name="google-site-verification"
           content="VGE8JRrLX72D-52tK97AVHHplepzqTgFSP2QvTqdvu4"
