@@ -13,7 +13,7 @@ function Bio({ works, biography, contact }) {
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <meta
           name="description"
-          content="Ting-Tong Chang (b. 1982) received his MFA at Goldsmiths, University of London, and has exhibited internationally. 張碩尹（b. 1982），國立政治大學廣告學學士，倫敦大學金匠學院藝術碩士畢．其創作媒材跨及裝置、繪畫、表演與錄像，並結合科學、生物學、生物動力學等不同知識領域，反應人與科技、社會的關係。"
+          content="Ting Tong Chang is a Taiwanese artist known for his collaborative projects through a variety of media including installation, performance, video and painting.張碩尹為台灣藝術家，創作跨及裝置、表演、錄像與繪畫，並結合不同知識領域，反應人與科技、社會的關係。"
         />
       </Head>
 

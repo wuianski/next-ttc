@@ -5,6 +5,8 @@ import { deepMerge } from "grommet/utils";
 import { grommet } from "grommet/themes";
 import { Box, Grid, ResponsiveContext, Grommet } from "grommet";
 import ImageSwiper from "../../components/imageSwiper";
+//import getMediaFile from "../../lib/download";
+//import { getStrapiURL } from "../../lib/api";
 
 // slider module, import css in _app.js
 import AwesomeSlider from "react-awesome-slider";
@@ -48,6 +50,7 @@ function Work({ worksList, work, baseUrl, contact }) {
 
   const router = useRouter();
   const { id } = router.query;
+  //console.log(mappedworkImgs);
 
   return (
     <div>
@@ -211,24 +214,32 @@ function Work({ worksList, work, baseUrl, contact }) {
   );
 }
 
-/*export async function getStaticPaths() {
-  const works = await fetchAPI("/works");
-
-  return {
-    paths: works.map((work) => ({
-      params: {
-        id: work.id.toString(),
-      },
-    })),
-    fallback: false,
-  };
-}*/
-
 // This also gets called at build time
 export async function getServerSideProps({ params }) {
   const works = await fetchAPI(`/works?id=${params.id}`);
   const worksList = await fetchAPI("/works");
   const contact = await fetchAPI("/contact");
+
+  const workImgs = works[0].images;
+
+  // download all drawings first and change the works url to local url
+  /*for (let index = 0; index < workImgs.length; index++) {
+    const workImg = workImgs[index];
+
+    try {
+      const newUrl = await getMediaFile(workImg.formats.large);
+      workImg.formats.large.url = newUrl;
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  const mappedworkImgs = workImgs.map((workImg) => {
+    return {
+      url: workImg.formats.large.url,
+      id: workImg.id,
+    };
+  });*/
 
   return {
     props: { work: works[0], worksList, contact },

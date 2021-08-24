@@ -10,7 +10,10 @@ function Home({ works, contact, frontPageVideo }) {
         <title>Ting Tong Chang 張碩尹</title>
         <meta charSet="utf-8" />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-        <meta name="description" content="Ting Tong Chang 張碩尹" />
+        <meta
+          name="description"
+          content="Ting Tong Chang is a Taiwanese artist known for his collaborative projects through a variety of media including installation, performance, video and painting.張碩尹為台灣藝術家，創作跨及裝置、表演、錄像與繪畫，並結合不同知識領域，反應人與科技、社會的關係。"
+        />
         <meta
           name="google-site-verification"
           content="VGE8JRrLX72D-52tK97AVHHplepzqTgFSP2QvTqdvu4"
