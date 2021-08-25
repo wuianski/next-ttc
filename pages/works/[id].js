@@ -51,6 +51,8 @@ function Work({ worksList, work, baseUrl, contact }) {
   const router = useRouter();
   const { id } = router.query;
   //console.log(mappedworkImgs);
+  //const workImgs = mappedworkImgs.map((img) => img.url.replace("r", "/r"));
+  //console.log(workImgs);
 
   return (
     <div>

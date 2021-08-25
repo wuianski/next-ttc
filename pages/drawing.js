@@ -4,8 +4,8 @@ import { fetchAPI } from "../lib/api";
 import { Box } from "grommet";
 import Gallery from "../components/gallery";
 import Head from "next/head";
-import getMediaFile from '../lib/download';
-import { getStrapiURL } from '../lib/api';
+//import getMediaFile from '../lib/download';
+//import { getStrapiURL } from '../lib/api';
 
 function Drawing({ works, drawings, contact }) {
   /*const myLoader = ({ src, width, quality }) => {
@@ -42,7 +42,7 @@ export async function getServerSideProps() {
   ]);
 
   // download all drawings first and change the drawings url to local url
-  for (let index = 0; index < drawings.length; index++) {
+  /*for (let index = 0; index < drawings.length; index++) {
     const draw = drawings[index];
     try {
       const newUrl = await getMediaFile(draw.image.formats.large);
@@ -59,10 +59,10 @@ export async function getServerSideProps() {
       url: draw.image.formats.large.url,
       alt: draw.image.formats.large.alternativeText || draw.image.formats.large.name,
     }
-  });
+  });*/
 
   return {
-    props: { works, drawings: mappedDrawings, contact },
+    props: { works, drawings, contact },
     //revalidate: 1,
   };
 }

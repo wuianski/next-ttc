@@ -14,7 +14,9 @@ const Gallery = ({ drawings }) => {
       <LightGallery plugins={[]}>
         {drawings.map((drawing) => (
           <ImageGallery
-            drawing={drawing}
+            image={drawing.image.formats.large}
+            description={drawing.description}
+            order={drawing.order}
           />
         ))}
       </LightGallery>
