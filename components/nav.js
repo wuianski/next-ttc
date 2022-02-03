@@ -21,6 +21,9 @@ function Nav({ works, contact }) {
   const onOpen = () => setOpen(true);
   const onClose = () => setOpen(undefined);
 
+  !works ? null : works.sort((a, b) => b.order - a.order);
+  /*console.log(works);*/
+
   return (
     <div>
       <div className={styles.logoFixed}>
