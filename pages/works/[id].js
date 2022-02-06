@@ -57,10 +57,10 @@ function Work({ worksList, work, baseUrl, contact }) {
   return (
     <div>
       <Head>
-        <title>{work.title_en} - Ting Tong Chang 張碩尹</title>
+        <title>{work.title} - 張碩尹 Ting Tong Chang</title>
         <meta charSet="utf-8" />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-        <meta name="description" content={work.title_en} />
+        <meta name="description" content={work.description_zh_tw.desctiption} />
       </Head>
       <Nav works={worksList} contact={contact} />
       <div className="imgContainer">

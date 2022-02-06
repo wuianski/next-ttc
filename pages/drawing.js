@@ -15,7 +15,7 @@ function Drawing({ works, drawings, contact }) {
   return (
     <div>
       <Head>
-        <title>Drawing - Ting Tong Chang 張碩尹</title>
+        <title>Drawing - 張碩尹 Ting Tong Chang</title>
         <meta charSet="utf-8" />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <meta name="description" content="the collection of drawing practice" />

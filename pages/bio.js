@@ -8,12 +8,12 @@ function Bio({ works, biography, contact }) {
   return (
     <div>
       <Head>
-        <title>Bio - Ting Tong Chang 張碩尹</title>
+        <title>Bio - 張碩尹 Ting Tong Chang</title>
         <meta charSet="utf-8" />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <meta
           name="description"
-          content="Ting Tong Chang is a Taiwanese artist known for his collaborative projects through a variety of media including installation, performance, video and painting.張碩尹為台灣藝術家，創作跨及裝置、表演、錄像與繪畫，並結合不同知識領域，反應人與科技、社會的關係。"
+          content="張碩尹1982年出生於台灣台北，現工作與居住於台北與倫敦，其合作型計畫跨及裝置、錄像與劇場，反應人與科技、社會的關係。Ting Tong Chang (b.1982, Taipei, Taiwan) is an artist who lives and works in Taipei and London. Chang is known for his collaborative projects through a variety of media including installation, video and theatre."
         />
       </Head>
 
