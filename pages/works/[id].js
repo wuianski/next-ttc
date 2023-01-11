@@ -64,7 +64,12 @@ function Work({ worksList, work, baseUrl, contact }) {
       </Head>
       <Nav works={worksList} contact={contact} />
       <div className="imgContainer">
-        <AwesomeSlider bullets={true} fillParent={true} transitionDelay={500}>
+        <AwesomeSlider
+          bullets={true}
+          fillParent={true}
+          transitionDelay={500}
+          selected={0}
+        >
           {work.images.map((image) => (
             <div key={image.id}>
               <ImageSwiper image={image} />

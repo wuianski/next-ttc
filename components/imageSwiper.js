@@ -5,6 +5,7 @@ const ImageSwiper = ({ image }) => {
 
   return (
     <img
+      key={image.id}
       src={imageUrl}
       alt={image.alternativeText || image.name}
       className="imgSwiper"

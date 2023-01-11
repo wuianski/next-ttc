@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -17,7 +17,7 @@ function Nav({ works, contact }) {
     return undefined;
   }, [gutter]);
 
-  const ref = React.useRef();
+  const ref = useRef();
   const onOpen = () => setOpen(true);
   const onClose = () => setOpen(undefined);
 
@@ -171,16 +171,18 @@ function Nav({ works, contact }) {
                 <div>
                   {works.map((work) => (
                     <div key={work.id}>
-                      <Link href="/works/[id]" as={`/works/` + work.id}>
-                        <Box className={styles.menuWorksLink} onClick={onClose}>
+                      {/* <Box className={styles.menuWorksLink} onClick={onClose}> */}
+                      <Box className={styles.menuWorksLink}>
+                        {/* <Link href="/works/[id]" as={`/works/` + work.id}> */}
+                        <a href={`/works/${work.id}`}>
                           <div>
                             <span>{work.title_en}</span>
                             <span className={styles.menuWorksLinkTW}>
                               _ {work.title}
                             </span>
                           </div>
-                        </Box>
-                      </Link>
+                        </a>
+                      </Box>
                     </div>
                   ))}
                 </div>
