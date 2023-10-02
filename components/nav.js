@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -12,7 +12,7 @@ function Nav({ works, contact }) {
   const [modal] = React.useState(true);
   const [position] = React.useState(positions[0]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     window.dispatchEvent(new Event("resize"));
     return undefined;
   }, [gutter]);
