@@ -17,7 +17,7 @@ const Gallery = ({ drawings }) => {
             image={drawing.image.formats.large}
             description={drawing.description}
             order={drawing.order}
-            key={drawing.id}
+            key={drawing.order}
           />
         ))}
       </LightGallery>
