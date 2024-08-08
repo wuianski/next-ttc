@@ -33,7 +33,7 @@ function Drawing({ works, drawings, contact }) {
   );
 }
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   // Run API calls in parallel
   const [works, drawings, contact] = await Promise.all([
     fetchAPI("/works"),
@@ -63,7 +63,7 @@ export async function getServerSideProps() {
 
   return {
     props: { works, drawings, contact },
-    //revalidate: 1,
+    revalidate: 10,
   };
 }
 

@@ -90,7 +90,7 @@ function Nav({ works, contact }) {
             <Box align="end">
               <button className={styles.primaryNav} onClick={onClose}>
                 <svg className={styles.lightSVG} viewBox="0 0 294.843 294.843">
-                  <g stroke="none" stroke-width="1">
+                  <g stroke="none" strokeWidth="1">
                     <g fillRule="nonzero" fill="#FFFFFF">
                       <path
                         d="M147.421,0C66.133,0,0,66.133,0,147.421s66.133,147.421,147.421,147.421c38.287,0,74.567-14.609,102.159-41.136
@@ -116,7 +116,7 @@ function Nav({ works, contact }) {
                 </svg>
 
                 <svg className={styles.darkSVG} viewBox="0 0 294.843 294.843">
-                  <g stroke="none" stroke-width="1">
+                  <g stroke="none" strokeWidth="1">
                     <g fillRule="nonzero" fill="#000000">
                       <path
                         d="M147.421,0C66.133,0,0,66.133,0,147.421s66.133,147.421,147.421,147.421c38.287,0,74.567-14.609,102.159-41.136
@@ -153,16 +153,16 @@ function Nav({ works, contact }) {
             >
               <div>
                 <Link href="/bio">
-                  <div className={styles.menuLink} onClick={() => {}}>
+                  <div className={styles.menuLink} onClick={() => { }}>
                     Biography
                   </div>
                 </Link>
                 <div className={styles.menuLink}>
                   <a href={`mailto:` + contact.content}>Contact</a>
                 </div>
-                <Link href="/drawing">
-                  <div className={styles.menuLink} onClick={() => {}}>
-                    Drawing
+                <Link href="/2D">
+                  <div className={styles.menuLink} onClick={() => { }}>
+                    2D
                   </div>
                 </Link>
                 <div className={styles.menuLink}>Selected Works ↓↓↓ </div>

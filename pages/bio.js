@@ -32,7 +32,7 @@ function Bio({ works, biography, contact }) {
   );
 }
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   // Run API calls in parallel
   const [works, biography, contact] = await Promise.all([
     fetchAPI("/works"),
@@ -42,7 +42,7 @@ export async function getServerSideProps() {
 
   return {
     props: { works, biography, contact },
-    //revalidate: 1,
+    revalidate: 10,
   };
 }
 

@@ -33,7 +33,7 @@ function Home({ works, contact, frontPageVideo }) {
   );
 }
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   // Run API calls in parallel
   const [works, contact, frontPageVideo] = await Promise.all([
     fetchAPI("/works"),
@@ -43,7 +43,7 @@ export async function getServerSideProps() {
 
   return {
     props: { works, contact, frontPageVideo },
-    //revalidate: 1,
+    revalidate: 10,
   };
 }
 
