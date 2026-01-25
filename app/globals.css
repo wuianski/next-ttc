@@ -1,26 +1,113 @@
-@import "tailwindcss";
-
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+html,
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  padding: 0;
+  margin: 0;
+  overflow-x: hidden;
+  border-width: 0px;
+}
+/* Hide Scrollbar */
+body::-webkit-scrollbar {
+  display: none;
+}
+html {
+  scrollbar-width: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.vimeo-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+  overflow: hidden;
+  border-width: 0px;
+}
+.vimeo-wrapper iframe {
+  width: 100vw;
+  height: 56.25vw; /* Given a 16:9 aspect ratio, 9/16*100 = 56.25 */
+  min-height: 100vh;
+  min-width: 177.77vh; /* Given a 16:9 aspect ratio, 16/9*100 = 177.77 */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-width: 0px;
+}
+
+/* bio desktop */
+.bioContent {
+  /* font-size: 36px;
+  line-height: 49px; */
+  font-weight: 200;
+  text-justify: distribute;
+  text-align: justify;
+  /* padding-right: 12px; */
+  letter-spacing: 0.02em;
+}
+
+/* works desktop */
+.workTitle {
+  font-style: italic;
+  font-weight: normal;
+  /* font-size: 36px;
+  line-height: 49px; */
+  letter-spacing: 0.02em;
+  /* margin-bottom: 8px; */
+}
+.workPlaceYear {
+  font-style: normal;
+  font-weight: 300;
+  font-size: 18px;
+  line-height: 27px;
+  letter-spacing: 0.02em;
+}
+.workDesEN {
+  /* padding-right: 30px; */
+  text-justify: distribute;
+  text-align: justify;
+  line-height: 27px;
+  letter-spacing: 0.02em;
+}
+.workDesTW {
+  /* padding-left: 30px; */
+  text-justify: distribute;
+  text-align: justify;
+  line-height: 28px;
+  letter-spacing: 0.02em;
+}
+.vidDesR {
+  /* padding-left: 30px; */
+  text-justify: distribute;
+  text-align: justify;
+  font-size: 15px;
+  line-height: 22px;
+  letter-spacing: 0.02em;
+}
+.yarl__toolbar {
+  right: unset !important;
+  left: 0px !important;
+}
+.yarl__slide_captions_container {
+  background: unset !important;
+}
+.yarl__slide_description {
+  font-size: 15px !important;
+}
+
+@media only screen and (max-width: 600px) {
+  .yarl__slide_description {
+    font-size: 12px !important;
+  }
 }
