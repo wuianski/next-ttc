@@ -11,6 +11,22 @@ async function getData() {
   return { works, biography, contact };
 }
 
+export async function generateMetadata() {
+  const biography = await getData();
+
+  if (!biography?.content) {
+    return {
+      title: "Bio | TTC Studio",
+      description: "Biography details",
+    };
+  }
+
+  return {
+    title: `Bio | TTC Studio`,
+    description: `${biography.content}`,
+  };
+}
+
 export default async function Bio() {
   const { works, biography, contact } = await getData();
   // console.log("frontPageVideo:", frontPageVideo);

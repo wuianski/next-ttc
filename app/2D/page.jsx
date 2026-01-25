@@ -12,6 +12,13 @@ async function getData() {
   return { works, drawings, contact };
 }
 
+export async function generateMetadata() {
+  return {
+    title: `2D | TTC Studio`,
+    description: `2D details`,
+  };
+}
+
 export default async function Drawing() {
   const { works, drawings, contact } = await getData();
   /* revert drawings order to ascending */

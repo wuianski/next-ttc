@@ -74,6 +74,10 @@ const StyledTab = styled((props) => <Tab disableRipple {...props} />)(
 export default function WorkContent({ work }) {
   const [value, setValue] = useState(0);
 
+  if (!work) {
+    return <div>Loading...</div>;
+  }
+
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };

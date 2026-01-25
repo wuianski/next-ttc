@@ -10,6 +10,11 @@ async function getData() {
   return { works, contact, frontPageVideo };
 }
 
+export const metadata = {
+  title: `首頁 Home | TTC Studio`,
+  description: `TTC Studio's website`,
+};
+
 export default async function Page() {
   const { works, contact, frontPageVideo } = await getData();
   // console.log("frontPageVideo:", frontPageVideo);
