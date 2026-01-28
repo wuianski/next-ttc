@@ -11,8 +11,8 @@ async function getData() {
 }
 
 export const metadata = {
-  title: `首頁 Home | TTC Studio`,
-  description: `TTC Studio's website`,
+  title: `首頁 Home | TTC Studios`,
+  description: `TTC Studios' website`,
 };
 
 export default async function Page() {

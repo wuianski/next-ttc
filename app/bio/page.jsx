@@ -16,13 +16,13 @@ export async function generateMetadata() {
 
   if (!biography?.content) {
     return {
-      title: "Bio | TTC Studio",
+      title: "Bio | TTC Studios",
       description: "Biography details",
     };
   }
 
   return {
-    title: `Bio | TTC Studio`,
+    title: `Bio | TTC Studios`,
     description: `${biography.content}`,
   };
 }

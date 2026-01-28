@@ -14,7 +14,7 @@ async function getData() {
 
 export async function generateMetadata() {
   return {
-    title: `2D | TTC Studio`,
+    title: `2D | TTC Studios`,
     description: `2D details`,
   };
 }

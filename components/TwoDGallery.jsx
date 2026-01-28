@@ -1,20 +1,24 @@
 "use client";
 
 import React, { useState, useRef } from "react";
-// react-photo-album
+/* react-photo-album */
 import PhotoAlbum from "react-photo-album";
 import NextJsImage from "@/components/NextJsImage";
-// yet-another-react-lightbox
+/* yet-another-react-lightbox */
 import Lightbox from "yet-another-react-lightbox";
 import Zoom from "yet-another-react-lightbox/plugins/zoom";
 import "yet-another-react-lightbox/styles.css";
-// import LightBoxNextJsImage from "@/components/LightBoxNextJsImage";
-import LightBoxNextJsImage from "./LightBoxNextJsImage";
 import Captions from "yet-another-react-lightbox/plugins/captions";
 import "yet-another-react-lightbox/plugins/captions.css";
+/* MUI Icons */
 import ArrowBackIosRoundedIcon from "@mui/icons-material/ArrowBackIosRounded";
 import ArrowForwardIosRoundedIcon from "@mui/icons-material/ArrowForwardIosRounded";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
+import ZoomInRoundedIcon from "@mui/icons-material/ZoomInRounded";
+import ZoomOutRoundedIcon from "@mui/icons-material/ZoomOutRounded";
+/* Components */
+import LightBoxNextJsImage from "./LightBoxNextJsImage";
+import useWindowWidth from "@/components/useWindowWidth";
 
 export default function TwoDGallery({ photos, params }) {
   // console.log(photos);
@@ -48,6 +52,10 @@ export default function TwoDGallery({ photos, params }) {
   // console.log("myphotos:", myphotos);
   const ref = useRef(null);
 
+  /* Detect window width */
+  const width = useWindowWidth();
+  const isMobile = width < 900;
+
   return (
     <>
       <div>
@@ -80,18 +88,32 @@ export default function TwoDGallery({ photos, params }) {
             slide: LightBoxNextJsImage,
             buttonPrev: renderPrev ? undefined : () => null,
             buttonNext: renderNext ? undefined : () => null,
-            iconPrev: () => <ArrowBackIosRoundedIcon sx={{ fontSize: 50 }} />,
-            iconNext: () => (
-              <ArrowForwardIosRoundedIcon sx={{ fontSize: 50 }} />
+            iconPrev: () => (
+              <ArrowBackIosRoundedIcon sx={{ fontSize: isMobile ? 30 : 50 }} />
             ),
-            iconClose: () => <CloseRoundedIcon sx={{ fontSize: 50 }} />,
+            iconNext: () => (
+              <ArrowForwardIosRoundedIcon
+                sx={{ fontSize: isMobile ? 30 : 50 }}
+              />
+            ),
+            iconClose: () => (
+              <CloseRoundedIcon sx={{ fontSize: isMobile ? 30 : 50 }} />
+            ),
+            iconZoomIn: () => (
+              <ZoomInRoundedIcon sx={{ fontSize: isMobile ? 30 : 50 }} />
+            ),
+            iconZoomOut: () => (
+              <ZoomOutRoundedIcon sx={{ fontSize: isMobile ? 30 : 50 }} />
+            ),
           }}
           styles={{
-            container: { backgroundColor: "rgba(0, 0, 0, 0.5)" },
-            // icon: { color: "black" },
-            // button: { color: "rgba(0, 0, 0, 0.5)" },
+            container: {
+              backgroundColor: isMobile
+                ? "rgba(0, 0, 0, 1)"
+                : "rgba(0, 0, 0, 0.5)",
+            },
           }}
-          carousel={{ finite, padding: 80 }}
+          carousel={{ finite, padding: isMobile ? 20 : 80 }}
           captions={{ descriptionTextAlign: "center", descriptionMaxLines: 5 }}
           animation={{
             fade: 300,
@@ -107,7 +129,7 @@ export default function TwoDGallery({ photos, params }) {
             closeOnPullDown: true,
           }}
           on={{ click: () => ref.current?.close() }}
-          toolbar={{ buttons: [""] }}
+          toolbar={{ buttons: isMobile ? ["close"] : [""] }}
         />
       </div>
     </>

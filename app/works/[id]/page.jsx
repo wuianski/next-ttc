@@ -21,13 +21,13 @@ export async function generateMetadata({ params }) {
 
   if (!work?.work?.title) {
     return {
-      title: "work | TTC Studio",
+      title: "work | TTC Studios",
       description: "Work details",
     };
   }
 
   return {
-    title: `${work.work.title} | TTC Studio`,
+    title: `${work.work.title} | TTC Studios`,
     description: work.work.title,
     canonical: `https://tingtongchang.co.uk/works/${work.work.id}`,
     openGraph: {
