@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef, useEffect, useState } from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -8,8 +8,7 @@ import { Box, Modal, Backdrop, Fade } from "@mui/material";
 import styles from "./nav.module.css";
 
 export default function Nav({ works, contact }) {
-  !works ? null : works.sort((a, b) => b.order - a.order);
-  /*console.log(works);*/
+  const sortedWorks = [...(works ?? [])].sort((a, b) => b.order - a.order);
 
   const [open, setOpen] = useState(false);
   const handleOpen = () => {
@@ -189,7 +188,7 @@ export default function Nav({ works, contact }) {
             </Box>
             <Box sx={{ paddingTop: "48px" }}>
               <div>
-                {works.map((work) => (
+                {sortedWorks.map((work) => (
                   <div key={work.id}>
                     {/* <Box className={styles.menuWorksLink} onClick={onClose}> */}
                     <Box

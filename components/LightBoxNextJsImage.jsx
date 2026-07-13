@@ -44,7 +44,7 @@ export default function NextJsImage({ slide, offset, rect }) {
         fill
         priority={false}
         alt="work image"
-        src={slide}
+        src={slide.src}
         quality={100}
         // loading="eager"
         draggable={false}

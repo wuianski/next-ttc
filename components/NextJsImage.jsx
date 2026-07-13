@@ -1,18 +1,18 @@
 import Image from "next/image";
 
 export default function NextJsImage({
-  photo,
+  photo: { src, blurDataURL },
   imageProps: { alt, title, sizes, className, onClick },
   wrapperStyle,
 }) {
   return (
     <div style={{ ...wrapperStyle, position: "relative" }}>
       <Image
-        // priority={true}
         fill
-        src={photo}
+        src={src}
         quality={100}
-        placeholder={"blurDataURL" in photo ? "blur" : undefined}
+        placeholder={blurDataURL ? "blur" : undefined}
+        blurDataURL={blurDataURL}
         {...{ alt, title, sizes, className, onClick }}
       />
     </div>
